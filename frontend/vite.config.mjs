@@ -32,4 +32,17 @@ export default defineConfig({
       },
     },
   },
+  test: {
+    environment: 'jsdom',
+    globals: true,
+    setupFiles: fileURLToPath(new URL('./src/tests/setup.js', import.meta.url)),
+
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'html', 'lcov'],
+      reportsDirectory: './coverage', 
+      include: ['src/**/*.vue', 'src/**/*.js'],
+      exclude: ['src/tests/**'],
+    },
+  },
 })
